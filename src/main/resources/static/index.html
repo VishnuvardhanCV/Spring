@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+	<form  onsubmit="myFunction()">
+ ID : <input name = 'Id' type="text"/>
+	Name : <input name= 'Name' type="text"/>
+	Department : <input name= 'Department'  type="text"/>
+	Salary : <input name='Salary' type="text"/>
+	Address : <input name='Address' type="text"/>
+	<input type="submit" />
+</form>
+
+<script>
+function myFunction() {
+	console.log("sfsdf");
+	var a = new XMLHttpRequest();
+	
+	a.open("POST","/addEmployee",false);
+	a.setRequestHeader("Content-type", "application/json");
+	console.log(new FormData(document.querySelector('form')).toString());
+	a.send(JSON.parse(new FormData(document.querySelector('form')).toString()));
+}
+</script>
+
+</body>
+
+
+
+</html>
