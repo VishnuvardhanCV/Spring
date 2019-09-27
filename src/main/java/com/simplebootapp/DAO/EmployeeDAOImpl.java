@@ -13,7 +13,7 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
-import com.simplebootapp.Entity.EmployeeModel;
+import com.simplebootapp.Models.EmployeeModel;
 import com.simplebootapp.exceptions.EmployeeNotFoundException;
 
 @Service

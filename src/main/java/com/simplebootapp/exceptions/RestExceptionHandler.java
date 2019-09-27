@@ -10,17 +10,30 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 	@ResponseBody
-	  @ExceptionHandler(EmployeeNotFoundException.class)
-	  @ResponseStatus(HttpStatus.NOT_FOUND)
-	  String employeeNotFoundHandler(EmployeeNotFoundException ex) {
-	    return ex.getMessage();
-	  }
+	@ExceptionHandler(EmployeeNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	String employeeNotFoundHandler(EmployeeNotFoundException ex) {
+		return ex.getMessage();
+	}
+
+	@ResponseBody
+	@ExceptionHandler(InterruptedException.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	String employeeNotFoundHandler(InterruptedException ex) {
+		return ex.getMessage();
+	}
+
+	@ResponseBody
+	@ExceptionHandler(InvalidCredentialsException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	String invalidCredentialsHandler(InvalidCredentialsException ex) {
+		return ex.getMessage();
+	}
 	
 	@ResponseBody
-	  @ExceptionHandler(InterruptedException.class)
-	  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	  String employeeNotFoundHandler(InterruptedException ex) {
-	    return ex.getMessage();
-	  }
-	
+	@ExceptionHandler(JwtException.class)
+	String signatureHandler(JwtException ex) {
+		return ex.getMessage();
+	}
+
 }

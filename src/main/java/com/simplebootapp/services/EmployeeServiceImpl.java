@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.simplebootapp.DAO.EmployeeDAO;
-import com.simplebootapp.Entity.EmployeeModel;
+import com.simplebootapp.Models.EmployeeModel;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {

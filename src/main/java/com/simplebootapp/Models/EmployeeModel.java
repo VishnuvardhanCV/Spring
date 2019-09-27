@@ -1,4 +1,4 @@
-package com.simplebootapp.Entity;
+package com.simplebootapp.Models;
 
 public class EmployeeModel {
 	

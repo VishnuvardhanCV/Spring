@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Component;
 
-import com.simplebootapp.Entity.EmployeeModel;
+import com.simplebootapp.Models.EmployeeModel;
 
 @Component
 public interface EmployeeService {
