@@ -18,8 +18,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.simplebootapp.exceptions.JwtException;
 import com.simplebootapp.services.JwtUserDetailsService;
 
-import io.jsonwebtoken.ExpiredJwtException;
-
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
@@ -43,8 +41,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 				username = jwtTokenUtil.getUsernameFromToken(jwtToken);
 			} catch (IllegalArgumentException e) {
 				System.out.println("Unable to get JWT Token");
-			} catch (ExpiredJwtException e) {
-				System.out.println("JWT Token has expired");
 			} catch (JwtException e) {
 				System.out.println("Jwt Error");
 			}

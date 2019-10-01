@@ -32,10 +32,10 @@ private User buildUserForAuthentication(UserDetails admin,
             admin.isEnabled(), true, true, true, authorities);
 }
 
+@SuppressWarnings("deprecation")
 @Override
 public UserDetails loadUserByUsername(String username)
         throws UsernameNotFoundException {
-	System.out.println("inside load by"+username);
 	UserDetails admin = User.withDefaultPasswordEncoder().username("admin").password("12345678").roles("ADMIN").build();
 	List<GrantedAuthority> authorities = buildUserAuthority("Role");
 	UserDetails user = User.withDefaultPasswordEncoder().username("user").password("12345678").roles("USER").build();

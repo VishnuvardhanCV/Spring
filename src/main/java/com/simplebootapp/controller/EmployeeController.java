@@ -1,7 +1,6 @@
 package com.simplebootapp.controller;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.simplebootapp.Models.EmployeeModel;
+import com.simplebootapp.exceptions.DatabaseException;
 import com.simplebootapp.services.EmployeeService;
 
 
@@ -28,18 +28,17 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@GetMapping(path = "/getEmployees")
-	public List<EmployeeModel> getEmployees() throws InterruptedException, ExecutionException{
+	public List<EmployeeModel> getEmployees() throws DatabaseException {
 			return employeeService.getEmployees();
 	}
 	
 	@RequestMapping("/addEmployee")
-	public boolean addEmployee(@RequestBody EmployeeModel employee){
-		System.out.println("Controller");
+	public boolean addEmployee(@RequestBody EmployeeModel employee) throws DatabaseException{
 			return employeeService.addEmployee(employee);
 	}
 	
 	@RequestMapping("/removeEmployee")
-	public boolean removeEmployee(@RequestParam String id) throws InterruptedException, ExecutionException{
+	public boolean removeEmployee(@RequestParam String id) throws DatabaseException{
 			return employeeService.removeEmployee(id);
 	}
 

@@ -4,6 +4,20 @@ public class EmployeeModel {
 	
 	private int id;
 	
+	public EmployeeModel(int id, String name, String address, String department, Double salary) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.department = department;
+		this.salary = salary;
+	}
+	
+	public EmployeeModel() {
+		
+	}
+
+
 	private String name;
 	
 	private String address;

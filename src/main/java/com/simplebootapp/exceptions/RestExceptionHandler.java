@@ -35,5 +35,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 	String signatureHandler(JwtException ex) {
 		return ex.getMessage();
 	}
+	
+	@ResponseBody
+	@ExceptionHandler(DatabaseException.class)
+	String signatureHandler(DatabaseException ex) {
+		return ex.getMessage();
+	}
 
 }
