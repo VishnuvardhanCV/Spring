@@ -1,9 +1,6 @@
 package com.simplebootapp.DAO;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.stereotype.Repository;
@@ -31,7 +28,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
 			for (QueryDocumentSnapshot document : documents) {
 				EmployeeModel emp = new EmployeeModel();
-				emp.setId(Integer.parseInt(document.getString("Id")));
+				emp.setId(Long.parseLong(document.getString("Id")));
 				emp.setAddress(document.getString("Address"));
 				emp.setDepartment(document.getString("Department"));
 				emp.setName(document.getString("Name"));
@@ -48,14 +45,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public boolean addEmployee(EmployeeModel newEmployee) throws DatabaseException {
 		Map<String, Object> data = new HashMap<>();
-		data.put("Id", String.valueOf(newEmployee.getId()));
+		String Id = String.valueOf(new Date().getTime() / 1000);
+		data.put("Id", Id);
 		data.put("Name", newEmployee.getName());
 		data.put("Address", newEmployee.getAddress());
 		data.put("Department", newEmployee.getDepartment());
 		data.put("Salary", newEmployee.getSalary());
 		boolean isAdded = false;
 		try {
-			DocumentReference docRef = db.collection("Employees").document(String.valueOf(newEmployee.getId()));
+			DocumentReference docRef = db.collection("Employees").document(Id);
 			docRef.set(data);
 			isAdded = true;
 		} catch (Exception e) {
@@ -80,7 +78,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		} catch (InterruptedException | ExecutionException e) {
 			throw new DatabaseException();
 		}
-
 		return isDeleted;
 	}
 

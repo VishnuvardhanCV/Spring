@@ -2,7 +2,7 @@ package com.simplebootapp.Models;
 
 public class EmployeeModel {
 	
-	private int id;
+	private long id;
 	
 	public EmployeeModel(int id, String name, String address, String department, Double salary) {
 		super();
@@ -26,11 +26,11 @@ public class EmployeeModel {
 	
 	private Double salary;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
